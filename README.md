@@ -1,2 +1,2 @@
-# xam-cam
+# XamCam
 Xamarin.Forms camera app
