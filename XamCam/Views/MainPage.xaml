@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:templates="clr-namespace:XamCam.Views.Templates"
+			 xmlns:viewmodels="clr-namespace:XamCam.ViewModels"
+			 ControlTemplate="{DynamicResource CameraPermissionViewTemplate}"
+             x:Class="XamCam.Views.MainPage">
+	<ContentPage.BindingContext>
+		<viewmodels:CameraPermissionViewModel/>
+	</ContentPage.BindingContext>
+	<ContentPage.Triggers>
+		<DataTrigger TargetType="ContentPage"
+					 Binding="{Binding CameraPermission.IsGranted}"
+					 Value="True">
+			<Setter Property="ControlTemplate" Value="{DynamicResource CameraPreviewViewTemplate}" />
+		</DataTrigger>
+		<!--<DataTrigger TargetType="ContentPage"
+					 Binding="{Binding PositionSelected}"
+					 Value="2">
+			<Setter Property="ControlTemplate" Value="{DynamicResource CameraPreviewViewTemplate}" />-->
+			<!--<DataTrigger.BindingContext>
+				<viewmodels:SimpleTabbedViewModel></viewmodels:SimpleTabbedViewModel>
+			</DataTrigger.BindingContext>-->
+		<!--</DataTrigger>-->
+	</ContentPage.Triggers>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<ControlTemplate x:Key="CameraPreviewViewTemplate">
+				<templates:CameraPreviewViewTemplate/>
+			</ControlTemplate>
+			<ControlTemplate x:Key="CameraPermissionViewTemplate">
+				<templates:CameraPermissionViewTemplate/>
+			</ControlTemplate>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+    <StackLayout>
+		<Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+			<Label Text="Camera Preview!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+		</Frame>
+		<Button Text="Tab1"
+				Command="{Binding SelectItemCommand}"
+				CommandParameter="1">
+			<!--<Button.BindingContext>
+				<viewmodels:SimpleTabbedViewModel></viewmodels:SimpleTabbedViewModel>
+			</Button.BindingContext>-->
+			<Button.Triggers>
+				<DataTrigger TargetType="Button"
+								 Binding="{Binding PositionSelected}"
+								 Value="1">
+					<Setter Property="TextColor" Value="Black" />
+				</DataTrigger>
+			</Button.Triggers>
+		</Button>
+
+		<Button Text="Tab2"
+                Command="{Binding SelectItemCommand}"
+                CommandParameter="2">
+			<!--<Button.BindingContext>
+				<viewmodels:SimpleTabbedViewModel></viewmodels:SimpleTabbedViewModel>
+			</Button.BindingContext>-->
+			<Button.Triggers>
+				<DataTrigger TargetType="Button"
+                                      Binding="{Binding PositionSelected}"
+                                      Value="2">
+					<Setter Property="TextColor" Value="Black" />
+				</DataTrigger>
+			</Button.Triggers>
+		</Button>
+		<Button Text="Enable camera permission"
+			Margin="10,0"
+			VerticalOptions="EndAndExpand"
+			Command="{Binding GoHomeCommand}"
+			CornerRadius="20"
+			FontSize="20"
+			TextColor="White"
+			BackgroundColor="#EE7E4C"/>
+
+	</StackLayout>
+
+</ContentPage>

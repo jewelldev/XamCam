@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:controls="clr-namespace:XamCam.Controls"
+             x:Class="XamCam.Views.Templates.CameraPermissionViewTemplate" >
+	<ContentPresenter/>
+	<Label Text="Camera Permission:" />
+	<Button Text="Enable camera permission"
+			Margin="10,0"
+			VerticalOptions="EndAndExpand"
+			Command="{TemplateBinding BindingContext.LoadPermissionCommand}"
+			CornerRadius="20"
+			FontSize="20"
+			TextColor="White"
+			BackgroundColor="#EE7E4C"/>
+</StackLayout>

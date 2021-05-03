@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamCam.Views;
 
 namespace XamCam
 {
@@ -11,6 +12,7 @@ namespace XamCam
             InitializeComponent();
 
             MainPage = new MainPage();
+            //MainPage = new NavigationPage(new PermissionPage());
         }
 
         protected override void OnStart()
